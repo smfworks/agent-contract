@@ -1,0 +1,19 @@
+{
+  "schema": "smf.agent-contract.v1",
+  "title": "PR review session",
+  "human": "Staff engineer",
+  "agent": "Review bot",
+  "goal": "Leave review comments on the open pull request. Human decides merge.",
+  "success": [
+    "Every changed file has a comment or an explicit LGTM",
+    "Blockers called out with file and line",
+    "A summary of risk is posted on the PR"
+  ],
+  "stop": [
+    "Do not merge, push, or approve as the human",
+    "Do not change CI secrets or deploy config",
+    "Do not rewrite git history"
+  ],
+  "scope": "This pull request only. No other repos.",
+  "expiry": { "kind": "session" }
+}

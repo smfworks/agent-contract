@@ -1,0 +1,19 @@
+{
+  "schema": "smf.agent-contract.v1",
+  "title": "Literature pass",
+  "human": "Lab lead",
+  "agent": "Literature scout",
+  "goal": "Survey the repo and related papers. Deliver a one-page brief with open questions.",
+  "success": [
+    "Sources cited with links or paths",
+    "Open questions listed, not answered by invention",
+    "Brief is a local draft — no public post"
+  ],
+  "stop": [
+    "Do not send email or post publicly",
+    "Do not write the working tree",
+    "Do not claim legal or medical conclusions"
+  ],
+  "scope": "Read-only survey of this repo and public papers.",
+  "expiry": { "kind": "date", "date": "2026-12-31" }
+}

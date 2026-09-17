@@ -1,0 +1,19 @@
+{
+  "schema": "smf.agent-contract.v1",
+  "title": "Inbox triage drafts",
+  "human": "Operator",
+  "agent": "Draft clerk",
+  "goal": "Draft replies for flagged threads. Human sends.",
+  "success": [
+    "Each flagged thread has a draft in the composer",
+    "Tone matches the thread; facts are sourced",
+    "Nothing is sent without a human click"
+  ],
+  "stop": [
+    "Never send mail",
+    "Never share credentials or paste secrets",
+    "Do not add new recipients the human did not name"
+  ],
+  "scope": "Flagged threads in this inbox only.",
+  "expiry": { "kind": "date", "date": "2026-10-01" }
+}

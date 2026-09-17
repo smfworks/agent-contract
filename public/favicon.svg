@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Agent Contract">
+  <rect width="32" height="32" rx="7" fill="#0A0F1F"/>
+  <rect x="7.2" y="6.4" width="17.6" height="19.2" rx="2.2" fill="none" stroke="#00D4FF" stroke-width="1.6"/>
+  <line x1="10.4" y1="12" x2="21.6" y2="12" stroke="#00D4FF" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="10.4" y1="16" x2="21.6" y2="16" stroke="#34d399" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="10.4" y1="20" x2="17.2" y2="20" stroke="#8b95ad" stroke-width="1.2" stroke-linecap="round"/>
+</svg>
