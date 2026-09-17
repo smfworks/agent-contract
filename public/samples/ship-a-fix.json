@@ -1,0 +1,19 @@
+{
+  "schema": "smf.agent-contract.v1",
+  "title": "Ship the failing test",
+  "human": "Maintainer",
+  "agent": "Ship crew",
+  "goal": "Reproduce the bug, write a failing test, fix it, and open a PR.",
+  "success": [
+    "Failing test exists, then turns green",
+    "Change is scoped to the bug",
+    "PR opened against main with a short summary"
+  ],
+  "stop": [
+    "Do not deploy or touch production",
+    "Do not force-push or rewrite published history",
+    "Money, payments, and public posts stay human"
+  ],
+  "scope": "This repository. Tests and a pull request only.",
+  "expiry": { "kind": "session" }
+}

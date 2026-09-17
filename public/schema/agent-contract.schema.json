@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/smfworks/agent-contract/blob/main/public/schema/agent-contract.schema.json",
+  "title": "AgentContract",
+  "description": "Machine-readable human↔agent agreement. Other tools can emit this shape so Agent Contract can print a BOUND card. This is a communication artifact, not a legal instrument and not an enforcement runtime.",
+  "type": "object",
+  "required": ["title", "human", "agent", "goal", "success", "stop"],
+  "additionalProperties": true,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "smf.agent-contract.v1"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^AC-[0-9A-F]{4}$",
+      "description": "Contract serial printed on the card."
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Short name for the agreement."
+    },
+    "name": {
+      "type": "string",
+      "description": "Alias for title."
+    },
+    "human": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The person who owns judgment."
+    },
+    "operator": {
+      "type": "string",
+      "description": "Alias for human."
+    },
+    "agent": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The agent doing the work."
+    },
+    "issuedFor": {
+      "type": "string",
+      "description": "Alias for agent."
+    },
+    "parties": {
+      "type": "object",
+      "additionalProperties": true,
+      "properties": {
+        "human": { "type": "string" },
+        "agent": { "type": "string" }
+      }
+    },
+    "goal": {
+      "type": "string",
+      "minLength": 1,
+      "description": "What this session is for."
+    },
+    "objective": {
+      "type": "string",
+      "description": "Alias for goal."
+    },
+    "success": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Done-when bullets."
+    },
+    "successCriteria": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Alias for success."
+    },
+    "stop": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 },
+      "description": "Hard stops / must-not bullets."
+    },
+    "mustNot": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Alias for stop."
+    },
+    "scope": {
+      "type": "string",
+      "description": "Optional one-line bound on the work."
+    },
+    "expiry": {
+      "oneOf": [
+        {
+          "type": "object",
+          "required": ["kind"],
+          "additionalProperties": false,
+          "properties": { "kind": { "const": "session" } }
+        },
+        {
+          "type": "object",
+          "required": ["kind", "date"],
+          "additionalProperties": false,
+          "properties": {
+            "kind": { "const": "date" },
+            "date": { "type": "string", "format": "date" }
+          }
+        }
+      ]
+    },
+    "issuedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "heuristic": {
+      "type": "boolean",
+      "const": true,
+      "description": "Always true — this is a demo printer, not a legal or policy engine."
+    }
+  }
+}
