@@ -179,7 +179,29 @@ export default function App() {
     <div className="page">
       <div className="ambient" aria-hidden="true" />
       <Header />
-      <SisterStrip current="agent-contract" payload={JSON.stringify(draft)} />
+      <SisterStrip current="agent-contract" payload={JSON.stringify(draft)} kind="json" />
+      <HandoffBanner
+        accept={["json", "plain"]}
+        onPaste={(text) => {
+          try {
+            const parsed = JSON.parse(text) as Record<string, unknown>;
+            const source = (
+              parsed.draft && typeof parsed.draft === "object" ? parsed.draft : parsed
+            ) as Partial<ContractDraft>;
+            setDraft(
+              cloneDraft({
+                ...EMPTY_DRAFT,
+                ...source,
+                success: Array.isArray(source.success) ? source.success.map(String) : EMPTY_DRAFT.success,
+                stop: Array.isArray(source.stop) ? source.stop.map(String) : EMPTY_DRAFT.stop,
+              }),
+            );
+            setSampleId(null);
+          } catch {
+            /* not JSON — this app has no freeform paste box */
+          }
+        }}
+      />
       <main className="layout">
         <Composer
           draft={draft}
